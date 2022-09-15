@@ -1,0 +1,11 @@
+.leftmenu {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.leftmenu-list {
+  list-style: none;
+}
+/* .leftmenu-list img {
+  border: 50%;
+} */
