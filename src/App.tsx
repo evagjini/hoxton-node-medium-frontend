@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import LeftMenu from "../components/LeftMenu";
 
-type Blog = {
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Home } from "../pages/Home";
+import { BlogSec } from "../pages/BlogSec";
+import { PageNotFound } from "../pages/PageNotFound";
+
+export type Blog = {
   id: number;
   title: string;
   content: string;
@@ -12,16 +17,19 @@ type Blog = {
   responds: string[];
 };
 
-type User = {
+export type User = {
   id: number;
   name: string;
   email: string;
   profileImage: string;
   blogs: Blog[];
 };
+
 function App() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5136/blogs")
@@ -29,29 +37,23 @@ function App() {
       .then((blogsFromDb) => setBlogs(blogsFromDb));
   }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:5136/users")
-      .then((res) => res.json())
-      .then((usersFromDb) => setUsers(usersFromDb));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5136/users/${user?.id}`)
+  //     .then((res) => res.json())
+  //     .then((userFromDb) => setUser(userFromDb));
+  // }, [user?.id]);
 
   return (
     <div className="App">
       <LeftMenu />
-      <ul>
-        {blogs.map((blog) => (
-          <div>
-            <img
-              src={blog.user.profileImage}
-              alt={blog.user.name}
-              width={50}
-            ></img>
-            <span>{blog.user.name}</span>
-            <h1>{blog.title}</h1>
-            <h3>{blog.content}</h3>
-          </div>
-        ))}
-      </ul>
+      <main>
+        <Routes>
+          <Route index element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home blogs={blogs} />} />
+          <Route path="/blogs/:id" element={<BlogSec />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </main>
     </div>
   );
 }

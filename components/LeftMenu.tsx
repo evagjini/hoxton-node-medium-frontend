@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./LeftMenu.css";
 
 function LeftMenu() {
@@ -6,20 +7,22 @@ function LeftMenu() {
     <div className="leftmenu">
       <nav className="leftmenu-nav">
         <ul>
-          <li className="leftmenu-list">
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/5968/5968885.png"
-              alt="medium-photo"
-              width={20}
-            />
-          </li>
-          <li className="leftmenu-list">
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/25/25694.png"
-              alt="home"
-              width={20}
-            />
-          </li>
+          <Link to="/">
+            <li className="leftmenu-list">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/5968/5968885.png"
+                alt="medium-photo"
+                width={20}
+              />
+            </li>
+            <li className="leftmenu-list">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/25/25694.png"
+                alt="home"
+                width={20}
+              />
+            </li>
+          </Link>
           <li className="leftmenu-list">
             <img
               src="https://cdn-icons-png.flaticon.com/128/3602/3602145.png"
