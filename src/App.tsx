@@ -13,8 +13,8 @@ export type Blog = {
   content: string;
   user: User;
   userId: number;
-  likes: number;
-  responds: string[];
+  likes: [];
+  responds: Comment[];
 };
 
 export type User = {
@@ -24,10 +24,15 @@ export type User = {
   profileImage: string;
   blogs: Blog[];
 };
+type Comment = {
+  id: number;
+  comment: string;
+  user: User;
+};
 
 function App() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [user, setUser] = useState<User | null>(null);
+  // const [user, setUser] = useState<User | null>(null);
 
   const navigate = useNavigate();
 

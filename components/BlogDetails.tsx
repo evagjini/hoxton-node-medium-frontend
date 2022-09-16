@@ -24,16 +24,21 @@ function BlogDetails() {
           alt="likes"
           width={30}
         />
-        {blog.likes}
+        {blog.likes.length}
       </button>
-      <button>
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/1947/1947247.png"
-          alt="comments"
-          width={30}
-        />
-        {blog.responds}
-      </button>
+      <div>
+        <button>
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/1947/1947247.png"
+            alt="comments"
+            width={30}
+          />
+
+          {blog.responds
+            ? blog.responds.map((respond) => <span>{respond.comment}</span>)
+            : ""}
+        </button>
+      </div>
     </div>
   );
 }

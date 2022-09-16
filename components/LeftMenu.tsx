@@ -15,14 +15,15 @@ function LeftMenu() {
                 width={20}
               />
             </li>
-            <li className="leftmenu-list">
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/25/25694.png"
-                alt="home"
-                width={20}
-              />
-            </li>
           </Link>
+          <li className="leftmenu-list">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/25/25694.png"
+              alt="home"
+              width={20}
+            />
+          </li>
+
           <li className="leftmenu-list">
             <img
               src="https://cdn-icons-png.flaticon.com/128/3602/3602145.png"
